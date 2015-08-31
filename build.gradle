@@ -22,3 +22,8 @@ jar {
 		    "Class-Path": configurations.compile.collect { it.path }.join(':'))
 	}
 }
+
+task run(type: JavaExec, dependsOn:jar) {
+	main = 'Java_Bank'
+	classpath = sourceSets.main.runtimeClasspath
+}
