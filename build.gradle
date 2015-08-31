@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile 'com.miglayout:miglayout:3.7.4'
+}
+
+task wrapper(type: Wrapper) {
+	    gradleVersion = '2.6'
+}
+
+jar {
+	manifest {
+		attributes(
+			"Manifest-Version": "1.0",
+			"Main-Class": "Java_Bank",
+		    "Class-Path": configurations.compile.collect { it.path }.join(':'))
+	}
+}
